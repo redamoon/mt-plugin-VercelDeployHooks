@@ -12,7 +12,7 @@ l10n_class: VercelDeployHooks::L10N
 blog_config_template: vercel_deploy_hooks_setting.tmpl
 
 callbacks:
-    build: $VercelDeployHooks::VercelDeployHooks::Callbacks::post_save_builds
+    MT::App::CMS::cms_post_save.entry: $VercelDeployHooks::VercelDeployHooks::Callbacks::post_save_entry
 applications:
     cms:
         methods:
