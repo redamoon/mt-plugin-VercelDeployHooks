@@ -1,0 +1,72 @@
+<mt:SetVarBlock name="html_title"><__trans phrase="Vercel Deploy Hooks Plugin" /></mt:SetVarBlock>
+<mt:SetVarBlock name="page_title"><__trans phrase="Vercel Deploy Hooks Plugin" /></mt:SetVarBlock>
+
+<mt:SetVarBlock name="page_content">
+    <mt:Ignore>判定用</mt:Ignore>
+    <mt:SetVarBlock name="hooks_flg"><mt:Var name="vercel_deploy_hooks_production" /><mt:Var name="vercel_deploy_hooks_develop" /></mt:SetVarBlock>
+    <mt:If name="vercel_deploy_hooks_production">
+    <div class="mt-widget">
+        <h2 class="mt-widget__title">
+            <svg role="img" class="mt-icon"><title><__trans phrase="Build" /></title><use xlink:href="<mt:StaticWebPath />images/sprite.svg#ic_build" /></svg>
+            <__trans phrase="Production build" />
+        </h2>
+        <div class="mt-widget__content">
+            <mt:If name="request.save_production">
+                <mtapp:statusmsg class="success">
+                    <__trans phrase="I ran a production build of Vercel." />
+                </mtapp:statusmsg>
+            </mt:If>
+            <mt:If name="request.error_production">
+                <mtapp:statusmsg class="error">
+                    <__trans phrase="Production" />：<__trans phrase="The POST request failed." />
+                </mtapp:statusmsg>
+            </mt:If>
+            <form method="post" action="<mt:Var name='script_url' />" id="production">
+                <input type="hidden" name="__mode" value="vercel_deploy_hooks_production" />
+                <input type="hidden" name="blog_id" value="<mt:Var name='blog_id' escape='html' />" />
+                <input type="hidden" name="return_args" value="<mt:Var name='return_args' escape='html' />" />
+                <input type="hidden" name="magic_token" value="<mt:Var name='magic_token' escape='html' />" />
+                <button type="submit" class="btn__mobile btn-primary"><__trans phrase="Production" /><__trans phrase="Build" /></button>
+            </form>
+        </div>
+    </div>
+    </mt:If>
+
+    <mt:If name="vercel_deploy_hooks_develop">
+    <div class="mt-widget">
+        <h2 class="mt-widget__title">
+            <svg role="img" class="mt-icon"><title><__trans phrase="Build" /></title><use xlink:href="<mt:StaticWebPath />images/sprite.svg#ic_build" /></svg>
+            <__trans phrase="Develop build" />
+        </h2>
+        <div class="mt-widget__content">
+            <mt:If name="request.save_develop">
+                <mtapp:statusmsg class="success">
+                    <__trans phrase="I ran a development build of Vercel." />
+                </mtapp:statusmsg>
+            </mt:If>
+            <mt:If name="request.error_develop">
+                <mtapp:statusmsg class="error">
+                    <__trans phrase="Develop" />：<__trans phrase="The POST request failed." />
+                </mtapp:statusmsg>
+            </mt:If>
+            <form method="post" action="<mt:Var name='script_url' />" id="develop">
+                <mt:Var name="__name" value="vercel_deploy_hooks_develop" />
+                <input type="hidden" name="__mode" value="vercel_deploy_hooks_develop" />
+                <input type="hidden" name="blog_id" value="<mt:Var name='blog_id' escape='html' />" />
+                <input type="hidden" name="return_args" value="<mt:Var name='return_args' escape='html' />" />
+                <input type="hidden" name="magic_token" value="<mt:Var name='magic_token' escape='html' />" />
+                <button type="submit" class="btn__mobile btn-warning"><__trans phrase="Develop" /><__trans phrase="Build" /></button>
+            </form>
+        </div>
+    </div>
+    </mt:If>
+
+    <mt:Unless name="hooks_flg">
+        <mtapp:statusmsg class="danger">
+            <__trans phrase="No Vercel build hooks are defined." />
+        </mtapp:statusmsg>
+    </mt:Unless>
+
+</mt:SetVarBlock>
+<mt:Include name="layout/default.tmpl" />
+<mt:Var name="layout" />

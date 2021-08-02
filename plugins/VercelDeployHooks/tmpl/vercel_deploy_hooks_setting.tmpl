@@ -1,0 +1,36 @@
+<mtapp:setting
+  id="vercel_deploy_hooks_setting"
+  show_hint=1
+>
+  <div class="mt-widget">
+    <div class="mt-widget__title">Vercel Deploy Hooks ID</div>
+    <div class="mt-widget__content">
+      <div class="form-block mb-3">
+        <h3 class="h3"><__trans phrase='Develop ID' /></h3>
+        <p class="first-child"><__trans phrase='https://api.vercel.com/v1/integrations/deploy/' /></p>
+        <input
+          type="text"
+          name="vercel_deploy_hooks_develop"
+          id="vercel_deploy_hooks_develop"
+          value="<mt:Var name='vercel_deploy_hooks_develop' />"
+          class="form-control w-100"
+        />
+        <p class="form-text text-muted mb-3">
+          <__trans phrase='Enter your Vercel Deploy Hooks ID for your development environment.' />
+        </p>
+        <h3 class="h3"><__trans phrase='Production ID' /></h3>
+        <p class="first-child"><__trans phrase='https://api.vercel.com/v1/integrations/deploy/' /></p>
+        <input
+          type="text"
+          name="vercel_deploy_hooks_production"
+          id="vercel_deploy_hooks_production"
+          value="<mt:Var name='vercel_deploy_hooks_production' />"
+          class="form-control w-100"
+        />
+        <p class="form-text text-muted mb-3">
+          <__trans phrase='Enter your production Vercel Deploy Hooks ID.' />
+        </p>
+      </div>
+    </div>
+  </div>
+</mtapp:setting>

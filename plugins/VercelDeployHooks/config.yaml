@@ -1,0 +1,38 @@
+id: VercelDeployHooks
+key: VercelDeployHooks
+name: <__trans phrase="Vercel Deploy Hooks Plugin">
+version: 1.0.1
+description: <__trans phrase="_PLUGIN_DESCRIPTION">
+author_name: <__trans phrase="_PLUGIN_AUTHOR">
+author_link: https://www.redamoon.net/
+doc_link: https://github.com/redamoon/mt-plugin-VercelDeployHooks
+l10n_class: VercelDeployHooks::L10N
+
+# サイトの設定テンプレート
+blog_config_template: vercel_deploy_hooks_setting.tmpl
+
+callbacks:
+    build: $VercelDeployHooks::VercelDeployHooks::Callbacks::post_save_builds
+applications:
+    cms:
+        methods:
+            vercel_deploy_hooks_setting: $VercelDeployHooks::VercelDeployHooks::CMS::setting
+            vercel_deploy_hooks_request: $VercelDeployHooks::VercelDeployHooks::CMS::request
+            vercel_deploy_hooks_production: $VercelDeployHooks::VercelDeployHooks::CMS::production
+            vercel_deploy_hooks_develop: $VercelDeployHooks::VercelDeployHooks::CMS::develop
+        menus:
+            tools:vercel_deploy_hooks_setting:
+                label: 'Vercel'
+                order: 1000
+                mode: 'vercel_deploy_hooks_setting'
+                permission: 'administer,administer_website'
+                view:
+                    - blog
+                    - website
+settings:
+    vercel_deploy_hooks_develop:
+        default:
+        scope: blog
+    vercel_deploy_hooks_production:
+        default:
+        scope: blog
