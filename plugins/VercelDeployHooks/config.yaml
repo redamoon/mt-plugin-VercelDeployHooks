@@ -13,6 +13,7 @@ blog_config_template: vercel_deploy_hooks_setting.tmpl
 
 callbacks:
     MT::App::CMS::cms_post_save.entry: $VercelDeployHooks::VercelDeployHooks::Callbacks::post_save_entry
+    MT::App::CMS::cms_pre_preview: $VercelDeployHooks::VercelDeployHooks::Callbacks::post_preview_entry
 applications:
     cms:
         methods:
@@ -20,6 +21,8 @@ applications:
             vercel_deploy_hooks_request: $VercelDeployHooks::VercelDeployHooks::CMS::request
             vercel_deploy_hooks_production: $VercelDeployHooks::VercelDeployHooks::CMS::production
             vercel_deploy_hooks_develop: $VercelDeployHooks::VercelDeployHooks::CMS::develop
+            preview_url: $VercelDeployHooks::VercelDeployHooks::CMS::preview
+            blog_path: $VercelDeployHooks::VercelDeployHooks::CMS::path
         menus:
             tools:vercel_deploy_hooks_setting:
                 label: 'Vercel'
@@ -34,5 +37,11 @@ settings:
         default:
         scope: blog
     vercel_deploy_hooks_production:
+        default:
+        scope: blog
+    preview_url:
+        default:
+        scope: blog
+    blog_path:
         default:
         scope: blog
