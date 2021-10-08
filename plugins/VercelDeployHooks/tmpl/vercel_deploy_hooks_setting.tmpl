@@ -30,6 +30,28 @@
         <p class="form-text text-muted mb-3">
           <__trans phrase='Enter your production Vercel Deploy Hooks ID.' />
         </p>
+        <h3 class="h3"><__trans phrase='Preview URL' /></h3>
+        <input
+          type="text"
+          name="preview_url"
+          id="preview_url"
+          value="<mt:Var name='preview_url' />"
+          class="form-control w-100"
+        />
+        <p class="form-text text-muted mb-3">
+          <__trans phrase='Preview URL Please enter the destination URL.' />
+        </p>
+        <h3 class="h3"><__trans phrase='Blog Path' /></h3>
+        <input
+          type="text"
+          name="blog_path"
+          id="blog_path"
+          value="<mt:Var name='blog_path' />"
+          class="form-control w-100"
+        />
+        <p class="form-text text-muted mb-3">
+          <__trans phrase='Please enter the referenced blog path.' />
+        </p>
       </div>
     </div>
   </div>
