@@ -1,7 +1,7 @@
 id: VercelDeployHooks
 key: VercelDeployHooks
 name: <__trans phrase="Vercel Deploy Hooks Plugin">
-version: 1.0.1
+version: 0.0.1
 description: <__trans phrase="_PLUGIN_DESCRIPTION">
 author_name: <__trans phrase="_PLUGIN_AUTHOR">
 author_link: https://www.redamoon.net/
